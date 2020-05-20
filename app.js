@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
-const globalErrorHandler = require('./controllers/errorController');
+const errorController = require('./controllers/errorController');
+const userRouter = require('./router/userRouter');
 
 const app = express();
 app.use(express.static(path.join(__dirname, 'public')));
@@ -10,8 +11,8 @@ app.use((req, res, next) => {
   next();
 });
 
-//app.use('/api/users', userRouter);
+app.use('/api/users', userRouter);
 
-app.use(globalErrorHandler);
+app.use(errorController);
 
 module.exports = app;
