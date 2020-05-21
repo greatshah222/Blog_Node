@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const User = require('./../models/usermodel');
 const catchAsync = require('./../utilis/catchAsync');
+const CustomError = require('./../utilis/customError');
 
 exports.signup = catchAsync(async (req, res, next) => {
   const newUser = await User.create({
@@ -10,10 +11,12 @@ exports.signup = catchAsync(async (req, res, next) => {
     passwordConfirm: req.body.passwordConfirm,
     role: req.body.role,
   });
+  console.log(newUser);
   const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN,
   });
   newUser.password = undefined;
+  newUser.passwordConfirm = undefined;
   res.status(201).json({
     status: 'success',
     token: token,
@@ -21,4 +24,14 @@ exports.signup = catchAsync(async (req, res, next) => {
       user: newUser,
     },
   });
+});
+
+exports.login = catchAsync(async (req, res, next) => {
+  const { email, password } = req.body;
+  if (!email || !password) {
+    return next(new CustomError('please enter both the credential', 400));
+  }
+  const user = (await User.findOne({ email: req.body.email })).isSelected(
+    '+password'
+  );
 });

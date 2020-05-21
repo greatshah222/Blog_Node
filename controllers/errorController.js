@@ -1,10 +1,18 @@
+const CustomError = require('./../utilis/customError');
+
 const sendErrorDev = (err, req, res) => {
-  if (err.isOperatinal) {
+  if (err.isOperational) {
     res.status(err.statusCode).json({
       status: err.status,
       error: err,
       stack: err.stack,
       message: err.message,
+    });
+  } else {
+    res.status(err.statusCode).json({
+      status: err.status,
+      error: err,
+      message: 'something went wrong',
     });
   }
 };
