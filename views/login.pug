@@ -1,0 +1,30 @@
+
+extends base
+block head
+    script(src="https://kit.fontawesome.com/a81368914c.js")
+block content
+
+   
+    section.login-section
+        img.wave(src="/img/wave.png", alt="wave")
+        .loginBox-container
+            .login-image
+                img(src="/img/bg.svg", alt="", srcset="")
+            .login-container
+                form
+                    img.avatar(src="/img/avatar.svg", alt="avatar", srcset="")
+                    h1 Welcome
+                    .input-div.one
+                        i
+                            i.fas.fa-user
+                        div
+                            h5 Email
+                            input#email.input(type="email", name="email")
+                    .input-div.two
+                        i
+                            i.fas.fa-lock
+                        div
+                            h5 Password
+                            input#password.input(type="password", name="password")
+                    a Forgot Password 
+                    input.forgot-password(type="submit" value='Login')   
