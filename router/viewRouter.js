@@ -1,5 +1,7 @@
-// const express = require('express');
+const express = require('express');
+const viewController = require('./../controllers/viewController');
 
-// const router = express.Router();
+const router = express.Router();
 
-// // router.get('getLogin', viewController.getLogin);
+router.get('/', viewController.getOverview);
+module.exports = router;

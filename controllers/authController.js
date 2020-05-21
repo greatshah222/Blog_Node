@@ -31,7 +31,21 @@ exports.login = catchAsync(async (req, res, next) => {
   if (!email || !password) {
     return next(new CustomError('please enter both the credential', 400));
   }
-  const user = (await User.findOne({ email: req.body.email })).isSelected(
+  const user = await User.findOne({ email: req.body.email }).select(
     '+password'
   );
+  console.log(user);
+  if (!user || !(await user.comparePassword(password, user.password))) {
+    return next(new CustomError('Incorrect credential', 401));
+  }
+  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRES_IN,
+  });
+  res.status(200).json({
+    status: 'success',
+    token: token,
+    data: {
+      user: user,
+    },
+  });
 });
