@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 const globalErrorhandler = require('./controllers/errorController');
 const userRouter = require('./router/userRouter');
 const viewRouter = require('./router/viewRouter');
+const blogRouter = require('./router/blogRouter');
 const CustomError = require('./utilis/customError');
 
 const app = express();
@@ -22,6 +23,7 @@ app.use((req, res, next) => {
 });
 app.use('/', viewRouter);
 app.use('/api/users', userRouter);
+app.use('/api/blogs', blogRouter);
 
 app.all('*', (req, res, next) => {
   next(new CustomError('no server found with this id', 404));

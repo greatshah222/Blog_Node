@@ -1,0 +1,34 @@
+extends base
+
+block content 
+    section.event-page-container
+        h2 Our events
+        .event-section
+            each event in events
+                .event-section-single
+                    .image-container
+                        img.event-image(src="/img/9.jpg", alt="event name")
+                    .text-container
+                        h3=event.name 
+                        h5= event.summary
+                        .event-list-container
+                            .locations
+                                ion-icon.icon-small(name="navigate-circle-outline")
+                                p Locations
+                                
+                            .locations
+                                ion-icon.icon-small(name="calendar-outline")
+                                p StartDates
+                            .locations
+                                ion-icon.icon-small(name="timer-outline")
+                                p= `${event.duration} days`
+                            .locations
+                                ion-icon.icon-small(name="people-circle-outline")
+                                p= `${event.duration} days`
+                    .link-container
+                        .locations
+                                ion-icon.icon-small(name="star-half-outline")
+                                p Ratings
+                        a.event-section-button Read More
+                        
+            

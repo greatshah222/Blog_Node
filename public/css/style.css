@@ -176,6 +176,13 @@ Section feature */
   background-color: white;
   cursor: pointer;
 }
+.icon-small {
+  
+  color: #e67d22 !important;
+  
+  
+  
+}
 .icon-big:hover {
   color: #e67d22;
   background-color: #e67d22;
@@ -567,25 +574,35 @@ form h1{
   width: 100%;
   height: 100%;
 }
+.extra-link{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
  .login-container a {
-  margin-top: -30px;
+  margin-top: -20px;
   font-size: 0.9rem;
-  margin-left: 120px;
-  width: 240px;
   color: #555;
   display: block;
-  text-align: right;
-  text-decoration: none;
-  transform: scale(0.9);
+  text-align: center ;
+ 
+  transform: scale(0.6);
   transition: 0.3s;
-  outline: none;
-  border: none;
+  cursor: pointer;
+ 
 }
- .login-container a:hover {
+ .login-container a.forgot-password:hover {
   color: #38d39f;
-  transform: scale(1);
+  transform: scale(0.7);
   transition: 0.2s ease;
-  padding: 2px 0;
+  padding: 1px 0;
+}
+ .login-container a.create-account:hover {
+  color: #2f8eff;
+  transform: scale(0.7);
+  transition: 0.2s ease;
+  padding: 1px 0;
+  
 }
 .login-btn{
   margin-top: 20px;
@@ -606,5 +623,99 @@ form h1{
 }
 
 .login-btn:hover {
+  background-position: right;
+}
+/* SIGNUP section
+SIGNUP section
+SIGNUP section */
+.login-container-signup{
+  height:90vh
+}
+.login-image-signup{
+  align-items: flex-start;
+}
+
+
+
+/* Event single page section
+Event single page section
+Event single page section */
+.event-page-container h2{
+  margin-bottom: 0;
+}
+
+.event-section{
+  display: grid;
+  grid-template-columns: repeat(3,1fr)  ;
+  grid-gap:25px;
+  padding: 20px 20px;
+  margin:0px 140px;
+  
+ 
+  
+}
+.event-section-single{
+  display: grid;
+  border:1px solid rgba(0, 0, 0, 0.25);
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.8fr 1.0fr 0.1fr;
+  grid-row-gap: 20px;
+  background-color: #f7f7f7;
+}
+
+.text-container{
+  display:grid;
+  grid-template-columns: 1fr;
+  padding: 0 40px;
+  
+  
+}
+
+.event-image{
+  width: 100%;
+  height: 100%;
+}
+.event-list-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+ 
+}
+.locations{
+  display: grid;
+  grid-template-columns: 10% 90%;
+  grid-column-gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+.link-container{
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  padding: 30px 20px;
+  border-top:.1px solid rgba(0, 0, 0, 0.267) ;
+  
+  
+}
+a.event-section-button{
+  
+  
+  
+  width: 40%;
+  height: 40px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f);
+  cursor: pointer;
+  display: block;
+  color: #fff;
+  text-transform: uppercase;
+  background-size: 400%;
+  transition: 0.5s;
+  text-align: center;
+  padding: 8px 0;
+  
+
+}
+a.event-section-button:hover{
   background-position: right;
 }

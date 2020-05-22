@@ -1,0 +1,44 @@
+
+extends base
+block head
+    script(src="https://kit.fontawesome.com/a81368914c.js")
+block content
+
+   
+    section.login-section
+        img.wave(src="/img/wave.png", alt="wave")
+        .loginBox-container
+            .login-image.login-image-signup
+                img(src="/img/signup1.svg", alt="", srcset="")
+            .login-container.login-container-signup
+                form.form-signup
+                    img.avatar(src="/img/avatar.svg", alt="avatar", srcset="")
+                    h1 Signup
+                    .input-div.one
+                        i
+                            i.fas.fa-user
+                        div
+                            h5 Name
+                            input#nameSignup.input(type="text")
+                    .input-div.two
+                        i
+                            i.fas.fa-user
+                        div
+                            h5 Email
+                            input#emailSignup.input(type="email")
+                    .input-div.three
+                        i
+                            i.fas.fa-lock
+                        div
+                            h5 Password
+                            input#passwordSignup.input(type="password")
+                    .input-div.four
+                        i
+                            i.fas.fa-lock
+                        div
+                            h5 Password Confirm
+                            input#passwordConfirmSignup.input(type="password")
+                    .extra-link
+                        a.forgot-password Forgot Password ?
+                        a.create-account(href="/login") Already have an account ? 
+                    button.login-btn Signup

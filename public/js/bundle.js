@@ -13727,7 +13727,7 @@ module.exports = require('./lib/axios');
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.login = void 0;
+exports.logout = exports.login = exports.signup = void 0;
 
 var _axios = _interopRequireDefault(require("axios"));
 
@@ -13737,16 +13737,71 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-var login = /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(email, password) {
+var signup = /*#__PURE__*/function () {
+  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(name, email, password, passwordConfirm) {
     var res;
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            console.log(email, password);
+            console.log(email, password, passwordConfirm, name);
             _context.prev = 1;
             _context.next = 4;
+            return (0, _axios.default)({
+              method: 'POST',
+              url: 'http://127.0.0.1:3000/api/users/signup',
+              data: {
+                name: name,
+                email: email,
+                password: password,
+                passwordConfirm: passwordConfirm
+              }
+            });
+
+          case 4:
+            res = _context.sent;
+            console.log(res.data);
+
+            if (res.data.status === 'success') {
+              alert('signed in  successfully');
+              window.setTimeout(function () {
+                location.assign('/');
+              }, 100);
+            }
+
+            _context.next = 12;
+            break;
+
+          case 9:
+            _context.prev = 9;
+            _context.t0 = _context["catch"](1);
+            alert(_context.t0);
+
+          case 12:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee, null, [[1, 9]]);
+  }));
+
+  return function signup(_x, _x2, _x3, _x4) {
+    return _ref.apply(this, arguments);
+  };
+}();
+
+exports.signup = signup;
+
+var login = /*#__PURE__*/function () {
+  var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(email, password) {
+    var res;
+    return regeneratorRuntime.wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            console.log(email, password);
+            _context2.prev = 1;
+            _context2.next = 4;
             return (0, _axios.default)({
               method: 'POST',
               url: 'http://127.0.0.1:3000/api/users/login',
@@ -13757,7 +13812,7 @@ var login = /*#__PURE__*/function () {
             });
 
           case 4:
-            res = _context.sent;
+            res = _context2.sent;
             console.log(res.data);
 
             if (res.data.status === 'success') {
@@ -13767,29 +13822,76 @@ var login = /*#__PURE__*/function () {
               }, 100);
             }
 
-            _context.next = 13;
+            _context2.next = 13;
             break;
 
           case 9:
-            _context.prev = 9;
-            _context.t0 = _context["catch"](1);
+            _context2.prev = 9;
+            _context2.t0 = _context2["catch"](1);
             alert('not success ');
-            alert(_context.t0);
+            alert(_context2.t0);
 
           case 13:
           case "end":
-            return _context.stop();
+            return _context2.stop();
         }
       }
-    }, _callee, null, [[1, 9]]);
+    }, _callee2, null, [[1, 9]]);
   }));
 
-  return function login(_x, _x2) {
-    return _ref.apply(this, arguments);
+  return function login(_x5, _x6) {
+    return _ref2.apply(this, arguments);
   };
 }();
 
 exports.login = login;
+
+var logout = /*#__PURE__*/function () {
+  var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+    var res;
+    return regeneratorRuntime.wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.prev = 0;
+            _context3.next = 3;
+            return (0, _axios.default)({
+              method: 'GET',
+              url: 'http://127.0.0.1:3000/api/users/logout'
+            });
+
+          case 3:
+            res = _context3.sent;
+
+            if (res.data.status = 'success') {
+              alert('logged Out successfully');
+              window.setTimeout(function () {
+                location.assign('/');
+              }, 100);
+            }
+
+            _context3.next = 10;
+            break;
+
+          case 7:
+            _context3.prev = 7;
+            _context3.t0 = _context3["catch"](0);
+            alert(_context3.t0);
+
+          case 10:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    }, _callee3, null, [[0, 7]]);
+  }));
+
+  return function logout() {
+    return _ref3.apply(this, arguments);
+  };
+}();
+
+exports.logout = logout;
 },{"axios":"../../node_modules/axios/index.js"}],"base.js":[function(require,module,exports) {
 "use strict";
 
@@ -13800,7 +13902,10 @@ exports.elements = void 0;
 
 /* eslint-disable */
 var elements = {
-  loginForm: document.querySelector('.form-login')
+  loginForm: document.querySelector('.form-login'),
+  inputsForm: document.querySelectorAll('.input'),
+  logoutBtn: document.querySelector('.logout'),
+  signupForm: document.querySelector('.form-signup')
 };
 exports.elements = elements;
 },{}],"index.js":[function(require,module,exports) {
@@ -13815,7 +13920,17 @@ var _login = require("./login");
 var _base = require("./base");
 
 /* eslint-disable */
-console.log('fofb');
+if (_base.elements.signupForm) {
+  _base.elements.signupForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = document.getElementById('nameSignup').value;
+    var email = document.getElementById('emailSignup').value;
+    var password = document.getElementById('passwordSignup').value;
+    var passwordConfirm = document.getElementById('passwordConfirmSignup').value;
+    console.log(name, email, password, passwordConfirm);
+    (0, _login.signup)(name, email, password, passwordConfirm);
+  });
+}
 
 if (_base.elements.loginForm) {
   _base.elements.loginForm.addEventListener('submit', function (e) {
@@ -13825,6 +13940,15 @@ if (_base.elements.loginForm) {
     (0, _login.login)(email, password);
   });
 }
+
+if (_base.elements.logoutBtn) {
+  _base.elements.logoutBtn.addEventListener('click', _login.logout);
+} // if (elements.inputsForm) {
+//   inputsForm.forEach((inputForm) => {
+//     inputForm.addEventListener('focus', addFocus);
+//     inputForm.addEventListener('blur', removeFocus);
+//   });
+// }
 },{"core-js/stable":"../../node_modules/core-js/stable/index.js","regenerator-runtime/runtime":"../../node_modules/regenerator-runtime/runtime.js","./login":"login.js","./base":"base.js"}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -13853,7 +13977,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54707" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60095" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -102,3 +102,13 @@ exports.isLoggedIn = async (req, res, next) => {
   // if there is no cookie
   next();
 };
+
+exports.logout = (req, res, next) => {
+  res.cookie('jwt', 'You Are Logged Out', {
+    expiresIn: new Date(Date.now() + 100 * 1000),
+    httpOnly: true,
+  });
+  res.status(200).json({
+    status: 'success',
+  });
+};

@@ -9,10 +9,18 @@ header
                 li
                     a Gallery
                 li
-                    a Cities
+                    a(href="/event") Events
                 li
                     a Volunteer
-                li
-                    a(href="/login") Login
+                if(user)
+                    li
+                        
+                        a(href="") My page       
+                    li
+                        a.logout Logout
+                        
+                else
+                    li
+                        a(href="/login") Login
                 
                 
