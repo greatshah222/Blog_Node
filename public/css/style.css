@@ -53,7 +53,12 @@ margin: 0 auto 0 auto;
   cursor: pointer;
 
 }
-
+.main-nav li a:link,
+.main-nav li a:visited {
+  text-decoration: none;
+  color: white;
+  font-size: 90%;
+}
 
 
 .main-nav li a:hover,
@@ -250,7 +255,7 @@ Gallery section */
 
 
 .gallery-section{
-  margin-top: 20px;
+  margin-top: 10px;
 }
 .gallery-container{
   display: grid;
@@ -261,23 +266,19 @@ Gallery section */
  
 
 }
-.image-gallery{
-  height:30vh;
-  width: auto;
-  overflow: hidden;
-  
-
-}
-
-.gallery-item img{
+.img-gallery{
+  width: 100%;
   opacity: 0.8;
-  transform: scale(1.23);
+  transform: scale(0.9);
   transition: transform 0.5s, opacity 0.5s;
 }
-.gallery-item img:hover{
+
+
+.img-gallery:hover{
   opacity: 1;
-  transform: scale(1);
+  transform: scale(1.1);
   transition: transform 0.5s, opacity 0.5s;
+  z-index: 1 ;
 }
 
 
@@ -286,9 +287,7 @@ Event section
 Event section */
 
 .event-image{
-  height:30vh;
-  width: auto;
-  overflow: hidden;
+ width: 100%;
 }
 .event-container{
   display: grid;
@@ -441,18 +440,27 @@ Footer section */
   font-size: 80%;
   font-weight: 400;
 }
+.footer-image{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+}
 .footer-img{
 
-  height:100px;
-  width:90px;
-  margin-left: 4px;
+ width: 100%;
 }
 .footer-text h3{
  
   font-weight: 400;
 }
+.footer-social-logo{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr ;
+  grid-gap: 20px;
+}
 
 .icon-footer{
+  width: 100%;
   padding: 0 10px;
   margin-bottom: -2px;
   cursor: pointer;
@@ -463,15 +471,9 @@ Footer section */
   margin-right: 10px;
   padding: 10px 10px;
   border: 2px solid #2f8eff;
-  background-color: #2f8eff;
+  background-color: black;
 }
-.icon-address{
-  font-size: 70%;
-  padding: 10px 4px;
-  border: 1px solid #2f8eff;
-  background-color: white;
 
-}
 .icon-social:hover{
   background-color: #e67d22;
   transition: all 0.3s;
@@ -493,7 +495,7 @@ login section */
   display:grid;
   grid-template-columns: repeat(2,1fr);
   width: 100vw;
-  height: 80vh;
+  height: 100vh;
   grid-gap: 5rem;
   padding: 0 2rem;
   
