@@ -9,6 +9,8 @@ console.log('fofb');
 if (elements.loginForm) {
   elements.loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    alert('clicked');
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    login(email, password);
   });
 }
