@@ -11,7 +11,7 @@ block content
             .login-image
                 img(src="/img/bg.svg", alt="", srcset="")
             .login-container
-                form
+                form.form-login
                     img.avatar(src="/img/avatar.svg", alt="avatar", srcset="")
                     h1 Welcome
                     .input-div.one
@@ -19,12 +19,12 @@ block content
                             i.fas.fa-user
                         div
                             h5 Email
-                            input#email.input(type="email", name="email")
+                            input#email.input(type="email")
                     .input-div.two
                         i
                             i.fas.fa-lock
                         div
                             h5 Password
-                            input#password.input(type="password", name="password")
+                            input#password.input(type="password")
                     a Forgot Password 
-                    input.forgot-password(type="submit" value='Login')   
+                    button.login-btn Login  

@@ -587,7 +587,7 @@ form h1{
   transition: 0.2s ease;
   padding: 2px 0;
 }
-.forgot-password{
+.login-btn{
   margin-top: 20px;
   margin-left: 10%;
   width: 80%;
@@ -605,6 +605,6 @@ form h1{
 
 }
 
-.forgot-password:hover {
+.login-btn:hover {
   background-position: right;
 }
