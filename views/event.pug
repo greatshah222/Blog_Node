@@ -3,18 +3,18 @@ extends base
 block content 
     section.event-page-container
         h2 Our events
-        .event-section
+        .event-section-main
             each event in events
                 .event-section-single
                     .image-container
-                        img.event-image(src="/img/9.jpg", alt="event name")
+                        img.event-image-1(src="/img/9.jpg", alt="event name")
                     .text-container
                         h3=event.name 
                         h5= event.summary
                         .event-list-container
                             .locations
                                 ion-icon.icon-small(name="navigate-circle-outline")
-                                p Locations
+                                p=`${event.startLocation.description}`
                                 
                             .locations
                                 ion-icon.icon-small(name="calendar-outline")
@@ -26,9 +26,9 @@ block content
                                 ion-icon.icon-small(name="people-circle-outline")
                                 p= `${event.duration} days`
                     .link-container
-                        .locations
+                        .locations.locations-second
                                 ion-icon.icon-small(name="star-half-outline")
-                                p Ratings
+                                p=`${event.ratingsAverage} ( ${event.ratingsQuantity} Ratings)`
                         a.event-section-button Read More
                         
             

@@ -2,6 +2,7 @@ const fs = require('fs');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const User = require('./../models/usermodel');
+const Blog = require('./../models/blogModel');
 
 dotenv.config({ path: './config.env' });
 
@@ -19,9 +20,12 @@ mongoose
   });
 
 const user = JSON.parse(fs.readFileSync(`${__dirname}/users.json`, 'utf-8'));
+const blog = JSON.parse(fs.readFileSync(`${__dirname}/blogs.json`, 'utf-8'));
 const importData = async () => {
   try {
     await User.create(user, { validateBeforeSave: false });
+
+    await Blog.create(blog);
     console.log('database imported succesfully');
   } catch (err) {
     console.log(err);
@@ -31,6 +35,7 @@ const importData = async () => {
 const deleteData = async () => {
   try {
     await User.deleteMany();
+    await Blog.deleteMany();
     console.log('database deleted succesfully');
   } catch (err) {
     console.log(err);

@@ -8,6 +8,7 @@ const globalErrorhandler = require('./controllers/errorController');
 const userRouter = require('./router/userRouter');
 const viewRouter = require('./router/viewRouter');
 const blogRouter = require('./router/blogRouter');
+const commentRouter = require('./router/commentRouter');
 const CustomError = require('./utilis/customError');
 
 const app = express();
@@ -24,6 +25,7 @@ app.use((req, res, next) => {
 app.use('/', viewRouter);
 app.use('/api/users', userRouter);
 app.use('/api/blogs', blogRouter);
+app.use('/api/comments', commentRouter);
 
 app.all('*', (req, res, next) => {
   next(new CustomError('no server found with this id', 404));

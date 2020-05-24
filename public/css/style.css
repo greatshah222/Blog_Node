@@ -166,8 +166,13 @@ Section feature */
   grid-column-gap: 10px;
   grid-row-gap: 40px;
   margin-bottom: 50px;
-  margin-left: 15px;
+  margin-left: 10%;
+  margin-right: 10%;
+  width: 80%;
+  padding: 10px 10px;
+  
 }
+
 
 .icon-big {
   margin-bottom: 10px;
@@ -293,9 +298,7 @@ Gallery section */
 Event section
 Event section */
 
-.event-image{
- width: 100%;
-}
+
 .event-container{
   display: grid;
   grid-template-columns: repeat(4 ,1fr );
@@ -305,6 +308,9 @@ Event section */
   
   
 }
+.event-image{
+  width: 100%;
+ }
 .event-item{
   
   background-color: #80246d;
@@ -421,11 +427,12 @@ Footer section */
   grid-template-columns:repeat(4,1fr);
   
   color: white;
-  grid-auto-rows: minmax(35vh,auto);
+  grid-auto-rows: minmax(40vh,auto);
   grid-gap: 40px;
   margin-top: 10px;
-  width:100%;
+  
   background-color: black;
+  padding: 10px 10px ;
 
 
 
@@ -434,6 +441,9 @@ Footer section */
   background-color:rgba(0, 0, 0, 0.425);
 
 
+}
+.footer-item{
+  width: 100%;
 }
 
 .footer-text{
@@ -449,8 +459,7 @@ Footer section */
 }
 .footer-image{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
 }
 .footer-img{
 
@@ -462,7 +471,7 @@ Footer section */
 }
 .footer-social-logo{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr ;
+  grid-template-columns: repeat(4,1fr);
   grid-gap: 20px;
 }
 
@@ -644,7 +653,7 @@ Event single page section */
   margin-bottom: 0;
 }
 
-.event-section{
+.event-section-main{
   display: grid;
   grid-template-columns: repeat(3,1fr)  ;
   grid-gap:25px;
@@ -656,6 +665,7 @@ Event single page section */
 }
 .event-section-single{
   display: grid;
+  
   border:1px solid rgba(0, 0, 0, 0.25);
   grid-template-columns: 1fr;
   grid-template-rows: 0.8fr 1.0fr 0.1fr;
@@ -666,18 +676,22 @@ Event single page section */
 .text-container{
   display:grid;
   grid-template-columns: 1fr;
-  padding: 0 40px;
+  padding: 0 30px;
+  justify-content: center;
+  align-items: center;
   
   
 }
 
-.event-image{
+.event-image-1{
   width: 100%;
   height: 100%;
 }
 .event-list-container{
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.1fr 1fr;
+  grid-column-gap:8px;
+  grid-row-gap: 15px;
  
 }
 .locations{
@@ -686,6 +700,9 @@ Event single page section */
   grid-column-gap: 10px;
   justify-content: center;
   align-items: center;
+}
+.locations-second{
+  grid-column-gap:10px ;
 }
 .link-container{
   background-color: white;
