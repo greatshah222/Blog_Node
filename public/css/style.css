@@ -738,9 +738,90 @@ a.event-section-button{
   padding: 8px 0;
   justify-self: center;
   align-self: center  ;
+  text-decoration: none;
   
 
 }
 a.event-section-button:hover{
   background-position: right;
+}
+
+
+
+/* Single event page
+Single event page
+Single event page
+Single event page */
+
+.single-event-page-image{
+  height: 70vh;
+  width: 100vw;
+  
+}
+.single-event-page-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+ 
+  
+}
+
+.about-section-conatiner{
+
+  background-color: rgba(255, 255, 255, 0.808);
+  display: grid;
+
+  
+  
+}
+.about-container{
+ width: 70%;
+ margin: 0 auto;
+}
+
+.quick-fact-container{
+  display: grid;
+  grid-gap: 10px;
+}
+.quick-fact{
+  display: grid;
+  grid-template-columns: 1fr;
+ justify-self: center;
+ align-self: center;
+ grid-gap: 100px;
+ 
+}
+.single-page-icon{
+  display: grid;
+  grid-template-columns: 0.7fr 2fr 2fr;
+  grid-gap: 10px;
+  align-items: center;justify-content: center;
+  padding: 10px 10px;
+}
+.single-page-text h2:after{
+  height: 1px;
+  display: block;
+  background-color: #e67d22;
+  margin-top:20px;
+  
+}
+.single-page-text h2{
+  font-size: 120%;
+  font-weight: 500;
+  
+}
+
+
+
+.quick-fact-info
+{
+  font-weight: 400;
+  color:#071a52
+}
+
+/* Single event page
+Map section
+Map section
+Map section */
+#map {
+  width:100%
 }

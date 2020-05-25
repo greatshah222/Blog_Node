@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const slugify = require('slugify');
 
 const blogSchema = new mongoose.Schema(
   {
@@ -8,6 +9,9 @@ const blogSchema = new mongoose.Schema(
       unique: true,
       maxlength: [40, 'a name cannot be more than 40 character'],
       minlength: [10, ' a name must have atleast 10 character'],
+    },
+    slug: {
+      type: String,
     },
     duration: {
       type: Number,
@@ -46,12 +50,20 @@ const blogSchema = new mongoose.Schema(
         default: 'Point',
         // Don't do `{ startLocation: { type: String } }`
         enum: ['Point'],
+        required: [true, 'Please enter the startLocation of the event'],
       },
-      coordinates: [Number],
+      coordinates: {
+        type: [Number],
+        required: [
+          true,
+          'Please enter a co-ordinates of the startlocation for the event',
+        ],
+      },
       address: String,
       description: String,
     },
     //start location is just some point describing on the earth but is not the documnent and actucal document is locations which needs to be in array fpor the embedding. for the locations an id will be created automatically since it is an embedded object and usually embeded object is within an array
+    // every event has the startLocation so it is in the model but the locations they can vary so they are embedded
     locations: [
       {
         type: {
@@ -84,6 +96,11 @@ const blogSchema = new mongoose.Schema(
   }
 );
 blogSchema.index({ slug: 1 });
+blogSchema.index({ startLocation: '2dsphere' });
+blogSchema.pre('save', function (next) {
+  this.slug = slugify(this.name, { lower: true });
+  next();
+});
 // to get the moderator in our blog. it will give output lik e
 // "moderator": [
 //   {
