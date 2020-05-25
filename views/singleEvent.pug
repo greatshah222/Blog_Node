@@ -7,11 +7,13 @@ block content
             .quick-fact
                 .quick-fact-container
                     .single-page-text
+                    
                         h2 Quick Facts
+                    -const date = event.startDates[0].toLocaleString(en-us,{month:'long',year:'numeric'})
                     .single-page-icon
                         ion-icon.icon-small(name="calendar-outline")
                         p.quick-fact-info Next Date
-                        p StartDates
+                        p=date
                     .single-page-icon
                         ion-icon.icon-small(name="people-circle-outline")
                         p.quick-fact-info Participants
@@ -19,11 +21,11 @@ block content
                     .single-page-icon
                         ion-icon.icon-small(name="chatbox-ellipses-outline")
                         p.quick-fact-info Comments
-                        p StartDates
+                        p=`${event.commentsQuantity} `
                     .single-page-icon
                         ion-icon.icon-small(name="timer-outline")
                         p.quick-fact-info Duration
-                        p StartDates
+                        p= `${event.duration} Days`
                 .coordinater-container
                     .single-page-text
                         h2 Co-ordinater
@@ -40,8 +42,9 @@ block content
             .about-section-conatiner
                 .about-container
                     .single-page-text
-                        h2 The park Camper
-                        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, dolorem earum non blanditiis consectetur, similique hic perferendis possimus reprehenderit facilis omnis cupiditate pariatur quo numquam! Ab ad nemo iure amet!
-                        p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia et fugiat consectetur commodi dolores amet sunt consequatur dolor quod beatae nulla aperiam facilis quaerat numquam deleniti, quidem saepe! Quo, voluptatem?
+                        h2= event.name
+                        -const paragraph = event.description.split('\n');
+                        each para in paragraph
+                            p=para
     section.section-map
         #map                    

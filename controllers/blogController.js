@@ -44,10 +44,61 @@ exports.getEventsWithin = catchAsync(async (req, res, next) => {
   const blog = await Blog.find({
     startLocation: { $geoWithin: { $centerSphere: [[lng, lat], radius] } },
   });
-  console.log(distance, lat, lng, latlng);
+  //console.log(distance, lat, lng, latlng);
   res.status(200).json({
     status: 'success',
     results: blog.length,
     data: { blog: blog },
+  });
+});
+
+exports.getDistancesFrom = catchAsync(async (req, res, next) => {
+  const { latlng, unit } = req.params;
+  const [lat, lng] = latlng.split(',');
+  const multiplier = unit === 'mi' ? 0.000621371 : 0.001;
+  if (!lat || !lng) {
+    return next(
+      new CustomError('Please enter both the latitude and longitude')
+    );
+  }
+  // https://docs.mongodb.com/manual/geospatial-queries/
+  // only aggregate pipeleine in geospatial and one of the field should be geospatial index. thats is why we are again using startLocation
+  // newar=> from where to calculate the location
+  // so lat.lng.
+  // distanceField: the name given what will it be called
+  //   db.places.aggregate( [
+  //     {
+  //        $geoNear: {
+  //           near: { type: "Point", coordinates: [ -73.9667, 40.78 ] },
+  //           spherical: true,
+  //           query: { category: "Parks" },
+  //           distanceField: "calcDistance"
+  //        }
+  //     }
+  //  ] )
+  const distances = await Blog.aggregate([
+    {
+      $geoNear: {
+        near: {
+          type: 'Point',
+          coordinates: [lng * 1, lat * 1],
+        },
+        distanceField: 'calcDistance',
+        // this distnace is in m so changing to km we have to divide by 1000 and mongodb we can do by using distanceMultiplier.
+        // we are using multiplier here cause unit can be miles or km and changing by using ternary operator above
+        distanceMultiplier: multiplier,
+      },
+    },
+    // keepimg only the distance and the name of the event
+    {
+      $project: {
+        calcDistance: 1,
+        name: 1,
+      },
+    },
+  ]);
+  res.status(200).json({
+    status: 'success',
+    data: { blog: distances },
   });
 });

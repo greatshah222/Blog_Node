@@ -21,7 +21,9 @@ router
   .route('/events-within/:distance/center/:latlng/unit/:unit')
   .get(blogController.getEventsWithin);
 // distance to all the events from certain point(eg if the user enter latlng(co-ordinates) it will give how far is the startLoation event from the current co-ordinates)
-router.route('/distance/:latlng/unit/:unit');
+router
+  .route('/distances/:latlng/unit/:unit')
+  .get(blogController.getDistancesFrom);
 router
   .route('/')
   .get(blogController.getAllBlogs)

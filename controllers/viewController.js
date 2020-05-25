@@ -1,5 +1,6 @@
 const catchAsync = require('./../utilis/catchAsync');
 const Blog = require('./../models/blogModel');
+const CustomError = require('./../utilis/customError');
 
 exports.getOverview = (req, res, next) => {
   res.status(200).render('main');
@@ -21,6 +22,10 @@ exports.getEvent = catchAsync(async (req, res, next) => {
   const event = await Blog.findOne({ slug: req.params.slug }).populate({
     path: 'comments',
   });
+  if (!event) {
+    return next(new CustomError('No tour found', 404));
+  }
+
   res.status(200).render('singleEvent', {
     title: 'All events',
     event: event,

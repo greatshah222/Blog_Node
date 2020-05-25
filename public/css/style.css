@@ -793,7 +793,7 @@ Single event page */
 .single-page-icon{
   display: grid;
   grid-template-columns: 0.7fr 2fr 2fr;
-  grid-gap: 10px;
+  
   align-items: center;justify-content: center;
   padding: 10px 10px;
 }
@@ -810,12 +810,21 @@ Single event page */
   
 }
 
-
+.single-page-icon p{
+  font-size: 90%;
+}
 
 .quick-fact-info
 {
   font-weight: 400;
-  color:#071a52
+  color:#071a52;
+ 
+}
+.about-container p{
+  word-spacing: 1px;
+  padding: 15px 5px;
+  font-weight: 300;
+  
 }
 
 /* Single event page
