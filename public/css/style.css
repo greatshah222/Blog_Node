@@ -701,23 +701,29 @@ Event single page section */
   justify-content: center;
   align-items: center;
 }
+.locations p{
+  font-size: 80%;
+}
 .locations-second{
-  grid-column-gap:10px ;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 15px;
 }
 .link-container{
   background-color: white;
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   padding: 30px 20px;
   border-top:.1px solid rgba(0, 0, 0, 0.267) ;
   
   
 }
+
 a.event-section-button{
   
   
   
-  width: 40%;
+  width: 80%;
   height: 40px;
   border-radius: 20px;
   font-size: 0.8rem;
@@ -730,6 +736,8 @@ a.event-section-button{
   transition: 0.5s;
   text-align: center;
   padding: 8px 0;
+  justify-self: center;
+  align-self: center  ;
   
 
 }

@@ -55,6 +55,9 @@ exports.getOne = (Model, populateOptions) =>
       query = query.populate(populateOptions);
     }
     const doc = await query;
+    if (!doc) {
+      return next(new CustomError('No document found', 404));
+    }
     res.status(200).json({
       status: 'success',
       data: {
@@ -65,7 +68,12 @@ exports.getOne = (Model, populateOptions) =>
 
 exports.getAll = (Model) =>
   catchAsync(async (req, res, next) => {
-    const doc = await Model.find();
+    // for getting comment for that specific blog
+    let filter = {};
+    if (req.params.blogId) {
+      filter = { blog: req.params.blogId };
+    }
+    const doc = await Model.find(filter);
     res.status(200).json({
       status: 'success',
       totalNumber: doc.length,

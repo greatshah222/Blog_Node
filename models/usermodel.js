@@ -35,22 +35,27 @@ const userSchema = new mongoose.Schema({
       message: 'doesnot match with password',
     },
   },
+  active: {
+    type: Boolean,
+    default: true,
+    select: false,
+  },
 });
-userSchema.pre('save', async function (next) {
-  // if password is not modified it will go to next middleware
-  if (!this.isModified('password')) {
-    return next();
-  }
-  this.password = await bcrypt.hash(this.password, 12);
-  this.passwordConfirm = undefined;
-  next();
-});
-userSchema.methods.comparePassword = async function (
-  candidatePassword,
-  savedPasswordInDatabase
-) {
-  return await bcrypt.compare(candidatePassword, savedPasswordInDatabase);
-};
+// userSchema.pre('save', async function (next) {
+//   // if password is not modified it will go to next middleware
+//   if (!this.isModified('password')) {
+//     return next();
+//   }
+//   this.password = await bcrypt.hash(this.password, 12);
+//   this.passwordConfirm = undefined;
+//   next();
+// });
+// userSchema.methods.comparePassword = async function (
+//   candidatePassword,
+//   savedPasswordInDatabase
+// ) {
+//   return await bcrypt.compare(candidatePassword, savedPasswordInDatabase);
+// };
 
 const User = mongoose.model('User', userSchema);
 module.exports = User;

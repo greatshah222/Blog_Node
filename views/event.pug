@@ -27,8 +27,11 @@ block content
                                 p= `${event.duration} days`
                     .link-container
                         .locations.locations-second
-                                ion-icon.icon-small(name="star-half-outline")
-                                p=`${event.ratingsAverage} ( ${event.ratingsQuantity} Ratings)`
+
+                            .locations.locations-second-first
+                                    ion-icon.icon-small(name="chatbubbles-outline")
+                                    p=`${event.ratingsAverage} ( ${event.commentsQuantity} Ratings)`
+                            .locations.locations-second-first
+                                ion-icon.icon-small(name="chatbox-outline")
+                                p=` ${event.commentsQuantity} Comments`
                         a.event-section-button Read More
-                        
-            
