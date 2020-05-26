@@ -22,6 +22,8 @@ exports.getEvent = catchAsync(async (req, res, next) => {
   const event = await Blog.findOne({ slug: req.params.slug }).populate({
     path: 'comments',
   });
+
+  // req.blog.id = event._id;
   if (!event) {
     return next(new CustomError('No tour found', 404));
   }

@@ -5,4 +5,5 @@ export const elements = {
   inputsForm: document.querySelectorAll('.input'),
   logoutBtn: document.querySelector('.logout'),
   signupForm: document.querySelector('.form-signup'),
+  commentForm: document.querySelector('.comment-form'),
 };

@@ -4,6 +4,7 @@ import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 import { login, addFocus, removeFocus, logout, signup } from './login';
 import { elements } from './base';
+import { commentPost } from './comment';
 
 if (elements.signupForm) {
   elements.signupForm.addEventListener('submit', (e) => {
@@ -28,6 +29,15 @@ if (elements.loginForm) {
 }
 if (elements.logoutBtn) {
   elements.logoutBtn.addEventListener('click', logout);
+}
+if (elements.commentForm) {
+  elements.commentForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const comment = document.getElementById('postComment').value;
+    const blogId = document.getElementById('blogId').value;
+    console.log(comment, blogId);
+    commentPost(comment, blogId);
+  });
 }
 // if (elements.inputsForm) {
 //   inputsForm.forEach((inputForm) => {

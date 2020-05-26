@@ -13,6 +13,9 @@ exports.setTourAndUserIdForComments = (req, res, next) => {
   if (!req.body.user) {
     req.body.user = req.user.id;
   }
+  if (!req.body.user || !req.body.blog) {
+    return next(new CustomError('no id found'));
+  }
   next();
 };
 

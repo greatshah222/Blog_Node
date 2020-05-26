@@ -62,6 +62,7 @@ block content
                 h2 Leave Your comment
                 .input-comment-form
                 
-                    input(type="text" class="input-comment" placeholder='YOUR COMMENT ...', required )
+                    input#postComment(type="text" class="input-comment" placeholder='YOUR COMMENT ...', required )
+                    input#blogId(type="hidden" value=event._id, required )
                     button.login-btn.comment-btn Add Comment
 

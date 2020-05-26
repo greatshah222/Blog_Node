@@ -102,3 +102,5 @@ exports.getDistancesFrom = catchAsync(async (req, res, next) => {
     data: { blog: distances },
   });
 });
+
+exports.checkIfBlogId = async (req, res, next) => {};

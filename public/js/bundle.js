@@ -13905,10 +13905,77 @@ var elements = {
   loginForm: document.querySelector('.form-login'),
   inputsForm: document.querySelectorAll('.input'),
   logoutBtn: document.querySelector('.logout'),
-  signupForm: document.querySelector('.form-signup')
+  signupForm: document.querySelector('.form-signup'),
+  commentForm: document.querySelector('.comment-form')
 };
 exports.elements = elements;
-},{}],"index.js":[function(require,module,exports) {
+},{}],"comment.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.commentPost = void 0;
+
+var _axios = _interopRequireDefault(require("axios"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+/* eslint-disable */
+var commentPost = /*#__PURE__*/function () {
+  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(comment, blogId) {
+    var res;
+    return regeneratorRuntime.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            console.log(comment);
+            _context.prev = 1;
+            _context.next = 4;
+            return (0, _axios.default)({
+              method: 'POST',
+              url: "http://127.0.0.1:3000/api/blogs/".concat(blogId, "/comments"),
+              data: {
+                comment: comment
+              }
+            });
+
+          case 4:
+            res = _context.sent;
+
+            if (res.data.status === 'success') {
+              alert('successful');
+              location.reload(true);
+            }
+
+            console.log(res);
+            _context.next = 12;
+            break;
+
+          case 9:
+            _context.prev = 9;
+            _context.t0 = _context["catch"](1);
+            console.log(_context.t0.response.data.message);
+
+          case 12:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee, null, [[1, 9]]);
+  }));
+
+  return function commentPost(_x, _x2) {
+    return _ref.apply(this, arguments);
+  };
+}();
+
+exports.commentPost = commentPost;
+},{"axios":"../../node_modules/axios/index.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 require("core-js/stable");
@@ -13918,6 +13985,8 @@ require("regenerator-runtime/runtime");
 var _login = require("./login");
 
 var _base = require("./base");
+
+var _comment = require("./comment");
 
 /* eslint-disable */
 if (_base.elements.signupForm) {
@@ -13943,13 +14012,23 @@ if (_base.elements.loginForm) {
 
 if (_base.elements.logoutBtn) {
   _base.elements.logoutBtn.addEventListener('click', _login.logout);
+}
+
+if (_base.elements.commentForm) {
+  _base.elements.commentForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var comment = document.getElementById('postComment').value;
+    var blogId = document.getElementById('blogId').value;
+    console.log(comment, blogId);
+    (0, _comment.commentPost)(comment, blogId);
+  });
 } // if (elements.inputsForm) {
 //   inputsForm.forEach((inputForm) => {
 //     inputForm.addEventListener('focus', addFocus);
 //     inputForm.addEventListener('blur', removeFocus);
 //   });
 // }
-},{"core-js/stable":"../../node_modules/core-js/stable/index.js","regenerator-runtime/runtime":"../../node_modules/regenerator-runtime/runtime.js","./login":"login.js","./base":"base.js"}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"core-js/stable":"../../node_modules/core-js/stable/index.js","regenerator-runtime/runtime":"../../node_modules/regenerator-runtime/runtime.js","./login":"login.js","./base":"base.js","./comment":"comment.js"}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
