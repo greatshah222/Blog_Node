@@ -834,3 +834,77 @@ Map section */
 #map {
   width:100%
 }
+
+/* Single event page
+Comment section
+Comment section
+Comment section */
+
+/* changing the placeholder layout */
+::-webkit-input-placeholder {
+  
+  font-size: 15px;
+  text-transform: initial;
+ 
+  
+}
+.comment-container{
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.comment-form{
+  align-self: center  ;
+  justify-self: center;
+  width: 60%;
+  margin: 10px auto;
+}
+.input-comment-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-content: center;
+}
+.input-comment-form input{
+
+ 
+ 
+  padding:60px 10px;
+  width: 80%;
+  align-self: center;
+  justify-self: center
+}
+.comment-btn{
+  width: 20%;
+  font-size: 80%;
+  margin-right: 10%;
+  justify-self: end;
+}
+.comment-primary-container{
+  display: grid;
+  width: 80%;
+  margin: 0 auto;
+  grid-template-columns: 10% 90%;
+  grid-gap: 40px;
+  padding: 20px 10px;
+}
+.comment-image{
+  height:80px;
+  width:auto
+}
+.comment-secondary-container{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 15px;
+}
+.comment-secondary-container h3{
+  font-size: 80%;
+  font-weight: 600;
+}
+
+.comment-time{
+  font-size: 70%;
+  
+}
+.comment-text{
+  font-size: 90%;
+}

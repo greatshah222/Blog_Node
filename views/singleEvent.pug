@@ -1,3 +1,4 @@
+
 extends base
 block content
 
@@ -29,22 +30,38 @@ block content
                 .coordinater-container
                     .single-page-text
                         h2 Co-ordinater
-
-                    .single-page-icon
-                        ion-icon.icon-small(name="calendar-outline")
-                        p.quick-fact-info StartDates
-                        p StartDates
-                    .single-page-icon
-                        ion-icon.icon-small(name="calendar-outline")
-                        p.quick-fact-info StartDates
-                        p StartDates
+                    each coordinater in event.moderator
+                        .single-page-icon
+                            ion-icon.icon-small(name="person-circle")
+                            p.quick-fact-info= coordinater.role
+                            p= coordinater.name
+                        
 
             .about-section-conatiner
                 .about-container
                     .single-page-text
                         h2= event.name
-                        -const paragraph = event.description.split('\n');
+                        - const paragraph = event.description.split('\n');
                         each para in paragraph
                             p=para
     section.section-map
         #map                    
+    section.comment-section
+        h2 Comments
+        each profile in event.comments
+            
+            .comment-primary-container
+                img.comment-image(src="/img/1.jpg", alt="")
+                  
+                .comment-secondary-container
+                    h3=profile.user.name
+                    p.comment-time=`${profile.createdAt.getMinutes()} minutes ago`
+                    p.comment-text= profile.comment
+        .comment-container
+            form.comment-form
+                h2 Leave Your comment
+                .input-comment-form
+                
+                    input(type="text" class="input-comment" placeholder='YOUR COMMENT ...', required )
+                    button.login-btn.comment-btn Add Comment
+
