@@ -6,4 +6,5 @@ export const elements = {
   logoutBtn: document.querySelector('.logout'),
   signupForm: document.querySelector('.form-signup'),
   commentForm: document.querySelector('.comment-form'),
+  createForm: document.querySelector('.form-blog'),
 };

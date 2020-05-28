@@ -12,7 +12,7 @@ const sendErrorDev = (err, req, res) => {
     res.status(err.statusCode).json({
       status: err.status,
       error: err,
-      message: 'something went wrong',
+      message: 'something went wrong again',
     });
   }
 };

@@ -9,6 +9,11 @@ router.get('/login', authController.isLoggedIn, viewController.getLogin);
 router.get('/signup', authController.isLoggedIn, viewController.getSignup);
 router.get('/events', authController.isLoggedIn, viewController.getAllEvent);
 router.get(
+  '/createBlog',
+  authController.isLoggedIn,
+  viewController.getBlogCreateForm
+);
+router.get(
   '/events/event/:slug',
   authController.isLoggedIn,
   viewController.getEvent

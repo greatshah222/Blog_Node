@@ -42,7 +42,10 @@ const blogSchema = new mongoose.Schema(
       default: Date.now(),
       select: false,
     },
-    startDates: [Date],
+    startDates: {
+      type: [String],
+      default: Date.now(),
+    },
     // it is (startLocation) for geospatial data
     startLocation: {
       type: {
@@ -54,6 +57,7 @@ const blogSchema = new mongoose.Schema(
       },
       coordinates: {
         type: [Number],
+
         required: [
           true,
           'Please enter a co-ordinates of the startlocation for the event',
@@ -62,8 +66,8 @@ const blogSchema = new mongoose.Schema(
       address: String,
       description: String,
     },
-    //start location is just some point describing on the earth but is not the documnent and actucal document is locations which needs to be in array fpor the embedding. for the locations an id will be created automatically since it is an embedded object and usually embeded object is within an array
-    // every event has the startLocation so it is in the model but the locations they can vary so they are embedded
+    // //start location is just some point describing on the earth but is not the documnent and actucal document is locations which needs to be in array fpor the embedding. for the locations an id will be created automatically since it is an embedded object and usually embeded object is within an array
+    // // every event has the startLocation so it is in the model but the locations they can vary so they are embedded
     locations: [
       {
         type: {

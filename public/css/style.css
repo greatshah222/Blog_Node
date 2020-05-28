@@ -845,12 +845,15 @@ Comment section */
   
   font-size: 15px;
   text-transform: initial;
+  font-weight: 400;
  
   
 }
 .comment-container{
   display: grid;
   grid-template-columns: 1fr;
+  border-top: 1px solid rgba(0, 0, 0, 0.349);
+
 }
 .comment-form{
   align-self: center  ;
@@ -887,6 +890,7 @@ Comment section */
   grid-gap: 40px;
   padding: 20px 10px;
 }
+
 .comment-image{
   height:80px;
   width:auto
@@ -896,6 +900,8 @@ Comment section */
   grid-template-columns: 1fr;
   grid-gap: 15px;
 }
+
+
 .comment-secondary-container h3{
   font-size: 80%;
   font-weight: 600;
@@ -907,4 +913,103 @@ Comment section */
 }
 .comment-text{
   font-size: 90%;
+}
+
+
+/* 
+Create blog form section
+Create blog form section
+Create blog form section */
+/* .blog-container{
+  display:grid;
+  grid-template-columns: 1fr;
+  width: 100vw;
+  height: 90vh;
+  
+  grid-gap: 5rem;
+  
+  
+} */
+.blog-section{
+  width: 80%;
+  background-color: wheat;
+  border: 2px solid rgba(0, 0, 0, 0.39);
+  margin: 10px auto;
+}
+.blog-section h2{
+margin-top: 0px;  
+padding-top: 30px;
+}
+.form-blog{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  grid-gap: 20px;
+  padding:10px 20px
+}
+.form-blog-container{
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-gap: 20px;
+  justify-content: center;
+  align-items: center;
+
+}
+.input-comment{
+  padding: 10px 20px;
+  width: 90%;
+}
+.input-formName h3{
+  font-size: 70%;
+  font-weight: 500;
+}
+.input-description{
+  padding:40px 20px
+}
+
+/* 
+add location blog form section
+add location blog form section
+add location blog form section */
+.blog-section-location{
+  width: 80%;
+  margin: 50px auto;
+  background-color: wheat;
+  border: 2px solid rgba(0, 0, 0, 0.39);
+
+
+
+}
+
+.form-blog-location{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+ 
+  width: 100%;
+ 
+  padding:10px 20px
+}
+.form-primary-container{
+  display: grid;
+  grid-template-columns: 1fr ;
+  width: 100%;
+  grid-gap: 10px;
+  padding:10px 20px
+}
+.form-primary-container h3{
+ font-size: 60%;
+}
+
+.form-location{
+  padding:10px 20px;
+grid-template-columns: 0.1fr 0.9fr;
+grid-gap: -5px  ;
+}
+.input-location{
+  padding:60px 20px
+
+
+}
+.form-blog-btn{
+  margin-left: 60%;
 }

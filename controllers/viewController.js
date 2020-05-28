@@ -11,6 +11,9 @@ exports.getLogin = (req, res, next) => {
 exports.getSignup = (req, res, next) => {
   res.status(200).render('signup');
 };
+exports.getBlogCreateForm = (req, res, next) => {
+  res.status(200).render('blog_create');
+};
 exports.getAllEvent = catchAsync(async (req, res, next) => {
   const events = await Blog.find();
   res.status(200).render('event', {
