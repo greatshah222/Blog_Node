@@ -15,16 +15,16 @@ block content
                             .locations
                                 ion-icon.icon-small(name="navigate-circle-outline")
                                 p=`${event.startLocation.description}`
-                                
+                            -const date = event.startDates[0].toLocaleString(en-us,{month:'long',year:'numeric'})    
                             .locations
                                 ion-icon.icon-small(name="calendar-outline")
-                                p StartDates
+                                p=date
                             .locations
                                 ion-icon.icon-small(name="timer-outline")
                                 p= `${event.duration} days`
                             .locations
                                 ion-icon.icon-small(name="people-circle-outline")
-                                p= `${event.duration} days`
+                                p= `${event.maxGroupSize} People`
                     .link-container
                         .locations.locations-second
 

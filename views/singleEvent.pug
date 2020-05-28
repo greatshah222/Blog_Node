@@ -1,5 +1,12 @@
 
 extends base
+block append head
+
+
+    script(src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js')
+    link(href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet')
+
+
 block content
 
     section.single-event-page
@@ -18,7 +25,7 @@ block content
                     .single-page-icon
                         ion-icon.icon-small(name="people-circle-outline")
                         p.quick-fact-info Participants
-                        p StartDates
+                        p=   ` ${event.maxGroupSize} People`
                     .single-page-icon
                         ion-icon.icon-small(name="chatbox-ellipses-outline")
                         p.quick-fact-info Comments
@@ -45,9 +52,9 @@ block content
                         each para in paragraph
                             p=para
     section.section-map
-        #map                    
+        #map(data-locations=`${JSON.stringify(event.locations)}`)                    
     section.comment-section
-        h2 Comments
+        h2= `${event.commentsQuantity} Comments`
         each profile in event.comments
             
             .comment-primary-container

@@ -1,4 +1,5 @@
 import axios from 'axios';
+const Blog = require('./../../models/blogModel');
 export const createPost = async (
   name,
   startDates,
@@ -9,20 +10,20 @@ export const createPost = async (
   duration,
   startAddress,
   startCoordinates,
-  startDescription
+  startDescription,
+  maxGroupSize,
+  locationAddress,
+  locationCoordinates,
+  locationDescription,
+  locationDay
 ) => {
-  console.log(
-    name,
-    startDates,
-    imageCover,
-    images,
-    summary,
-    description,
-    startAddress,
-    startCoordinates,
-    startDescription
-  );
   try {
+    console.log(
+      locationAddress,
+      locationCoordinates,
+      locationDescription,
+      locationDay
+    );
     const res = await axios({
       method: 'POST',
       url: 'http://127.0.0.1:3000/api/blogs/',
@@ -36,17 +37,24 @@ export const createPost = async (
         description,
         duration,
 
-        'startAddress.address': startAddress,
+        'startLocation.address': startAddress,
         'startLocation.coordinates': startCoordinates,
-        'startDescription.description': startDescription,
+        'startLocation.description': startDescription,
+        maxGroupSize,
+        'locations.coordinates': locationCoordinates,
+        'locations.address': locationAddress,
+        'locations.description': locationDescription,
+        'locations.day': locationDay,
       },
     });
     console.log(res);
+
     if (res.data.status === 'success') {
-      alert('signefd in  successfully');
-      window.setTimeout(() => {
-        location.assign('/');
-      }, 100);
+      alert('created successfully');
+      // location.reload();
+      // window.setTimeout(() => {
+      //   location.assign(`/events/event/${event.slug}`);
+      // }, 100);
     }
   } catch (err) {
     console.log(err.response.data);

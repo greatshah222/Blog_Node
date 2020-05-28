@@ -16,12 +16,13 @@ block content
                 .input-formName
                     h3 Duration 
                 .input-formContent
-                    input#blogDuration(type="text" class="input-comment" placeholder='Event Duration ...')
+                    input#blogDuration(type="number" class="input-comment" placeholder='Event Duration ...')
             .form-blog-container
                 .input-formName
                     h3 Nr People 
                 .input-formContent
-                    input#blogNrPeople(type="text" class="input-comment" placeholder='Event NrPeople ...')
+                    input#blogNrPeople(type="number" class="input-comment" placeholder='Event NrPeople ...')
+            
             
             
             .form-blog-container
@@ -52,19 +53,20 @@ block content
                     input#blogDescription(type="text" class="input-comment input-description" placeholder='Event Description ...')
             .form-blog-container
                     .input-formName
-                        h3 Latitude
+                        h3 start Latitude
                     .input-formContent
                         input#blogLatitude(type="number" class="input-comment" placeholder='Event coordinates...')
             .form-blog-container
                     .input-formName
-                        h3 Longitude
+                        h3 start Longitude
                     .input-formContent
                         input#blogLongitude(type="number" class="input-comment" placeholder='Event coordinates...')
             .form-blog-container
                     .input-formName
-                        h3 Address
+                        h3 start Address
                     .input-formContent
                         input#blogAddress(type="text" class="input-comment" placeholder='Event Address...', required )
+            
             
                 
             
@@ -73,40 +75,40 @@ block content
                         h3 Start(describe)
                     .input-formContent
                         input#blogStartDescription(type="text" class="input-comment input-description" placeholder='Event start location Description...', required )
+            .form-blog-container
+                    .input-formName
+                        h3 location( Latitude)
+                    .input-formContent
+                        input#locationLatitude(type="number" class="input-comment" placeholder='Event latitude...', required )
+            .form-blog-container
+                    .input-formName
+                        h3 location(Longitude)
+                    .input-formContent
+                        input#locationLongitude(type="number" class="input-comment" placeholder='Event longitude...', required )
+            .form-blog-container
+                    .input-formName
+                        h3 location(Address)
+                    .input-formContent
+                        input#locationAddress(type="text" class="input-comment" placeholder='Event Address...', required )
+            .form-blog-container
+                    .input-formName
+                        h3 Day
+                    .input-formContent
+                        input#locationDay(type="number" class="input-comment" placeholder='Event Address...', required )
+                
+                
+            
+            .form-blog-container
+                    .input-formName
+                        h3 location(Description)
+                    .input-formContent
+                        input#locationDescription(type="text" class="input-comment input-description" placeholder='Event Description...', required )
+
+            .form-blog-container
+                .input-formName
+                    
+                .input-formContent
+                    input#Slug(type="hidden")
             
             
             button.login-btn.form-blog-btn Create  Post
-           
-   section.blog-section-location
-    h2 ADD LOCATIONS 
-   
-    .blog-container
-        form.form-blog-location
-            
-            
-            .form-primary-container
-                .form-blog-container
-                    .input-formName
-                        h3 Latitude(S)
-                    .input-formContent
-                        input#blogName(type="number" class="input-comment" placeholder='Event latitude...', required )
-                .form-blog-container
-                    .input-formName
-                        h3 Longitude(S)
-                    .input-formContent
-                        input#blogName(type="number" class="input-comment" placeholder='Event longitude...', required )
-                .form-blog-container
-                    .input-formName
-                        h3 Address(Start)
-                    .input-formContent
-                        input#blogName(type="text" class="input-comment" placeholder='Event Address...', required )
-                
-                
-            
-            .form-blog-container.form-location
-                    .input-formName
-                        h3 Description(S)
-                    .input-formContent
-                        input#blogName(type="text" class="input-comment input-description" placeholder='Event Description...', required )
-            button.login-btn.form-blog-btn Add location   
-            

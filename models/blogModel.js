@@ -17,6 +17,10 @@ const blogSchema = new mongoose.Schema(
       type: Number,
       required: [true, 'A tour must have a duration'],
     },
+    maxGroupSize: {
+      type: Number,
+      required: [true, 'A tour must have a size'],
+    },
     // ratingsAverage, ratingsQuantity and comment Quantity is stored in the blog model so that we dodnt have to query the comment model as well to get these results in our blog page
 
     commentsQuantity: {
@@ -75,7 +79,13 @@ const blogSchema = new mongoose.Schema(
           default: 'Point',
           enum: ['Point'],
         },
-        coordinates: [Number],
+        coordinates: {
+          type: [Number],
+          required: [
+            true,
+            'Please enter a co-ordinates of the startlocation for the event',
+          ],
+        },
         address: String,
         description: String,
         day: Number,

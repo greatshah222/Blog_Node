@@ -1013,3 +1013,14 @@ grid-gap: -5px  ;
 .form-blog-btn{
   margin-left: 60%;
 }
+
+
+
+
+#map{
+  margin-top: 10px;
+  padding:10px 10px;
+  height: 60vh;
+  width: 90vw;
+  margin:0 auto
+}

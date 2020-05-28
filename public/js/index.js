@@ -5,8 +5,8 @@ import 'regenerator-runtime/runtime';
 import { login, addFocus, removeFocus, logout, signup } from './login';
 import { elements } from './base';
 import { commentPost } from './comment';
-import { createPost } from './createForm';
-import { duration } from 'moment';
+import { createPost, updatePost } from './createForm';
+import { displayMap } from './mapbox';
 
 if (elements.signupForm) {
   elements.signupForm.addEventListener('submit', (e) => {
@@ -64,10 +64,26 @@ if (elements.createForm) {
     const startAddress = document.getElementById('blogAddress').value;
     const startDescription = document.getElementById('blogStartDescription')
       .value;
-    console.log(longitude, latitude);
+    const maxGroupSize = document.getElementById('blogNrPeople').value;
+    // console.log(longitude, latitude);
     const startCoordinates = [latitude, longitude];
+    const slug = document.getElementById('Slug').value;
+    const locationLatitude = document.getElementById('locationLatitude').value;
+    const locationLongitude = document.getElementById('locationLongitude')
+      .value;
+    const locationCoordinates = [locationLatitude, locationLongitude];
+    const locationAddress = document.getElementById('locationAddress').value;
+    const locationDescription = document.getElementById('locationDescription')
+      .value;
+    const locationDay = document.getElementById('locationDay').value;
 
-    // console.log(name, startDates, ImageCover, Image, Summary, Description);
+    console.log(
+      locationAddress,
+      locationCoordinates,
+      startCoordinates,
+      locationDescription,
+      locationDay
+    );
     createPost(
       name,
       startDates,
@@ -78,7 +94,18 @@ if (elements.createForm) {
       duration,
       startAddress,
       startCoordinates,
-      startDescription
+      startDescription,
+      maxGroupSize,
+
+      locationAddress,
+      locationCoordinates,
+      locationDescription,
+      locationDay
     );
   });
+}
+// locations is the dataset name given in html file
+if (elements.mapBox) {
+  const locations = JSON.parse(elements.mapBox.dataset.locations);
+  displayMap(locations);
 }
