@@ -9,6 +9,7 @@ html {
   font-weight: 300;
   font-size: 20px;
   color: black;
+
 }
 /* Header
     Header
@@ -931,10 +932,12 @@ Create blog form section */
   
 } */
 .blog-section{
-  width: 80%;
+  width: 100%;
   background-color: wheat;
   border: 2px solid rgba(0, 0, 0, 0.39);
-  margin: 10px auto;
+  
+  
+  padding: 20px 50px;
 }
 .blog-section h2{
 margin-top: 0px;  
@@ -1023,4 +1026,45 @@ grid-gap: -5px  ;
   height: 60vh;
   width: 90vw;
   margin:0 auto
+}
+
+.admin{
+  display:grid;
+  grid-template-columns: 0.2fr 0.8fr;
+}
+.nav-secondary{
+  display: grid;
+  background-color: black;
+padding-top: 100px;
+  
+}
+.secondary-nav{
+  display: grid;
+  grid-gap: 30px;
+  grid-template-columns: 1fr;
+  height: 20px;
+  width: auto;
+  text-align: center  ;
+ padding:10px 10px
+ }
+.secondary-nav li{
+  list-style: none;
+  text-decoration: none;
+  padding: 20px 10px;
+  text-transform: uppercase;
+  background-color: black; 
+  color: white;
+  font-size: 80%;
+  cursor: pointer;
+
+ border: 2px solid rgba(255, 255, 255, 0.39);
+}
+
+.secondary-nav li a {
+  width: 100%;
+  cursor: pointer;
+}
+.secondary-nav li:hover {
+ background-color: rgba(255, 255, 255, 0.233);
+ color: rgba(255, 255, 255, 0.836);
 }

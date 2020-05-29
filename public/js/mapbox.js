@@ -13,7 +13,7 @@ export const displayMap = (locations) => {
   locations.forEach((loc) => {
     var marker = new mapboxgl.Marker({
       anchor: 'bottom',
-      color: 'cyan',
+      color: 'blue',
     })
       .setLngLat(loc.coordinates)
       .addTo(map);

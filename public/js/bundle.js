@@ -32927,7 +32927,7 @@ var displayMap = function displayMap(locations) {
   locations.forEach(function (loc) {
     var marker = new mapboxgl.Marker({
       anchor: 'bottom',
-      color: 'cyan'
+      color: 'blue'
     }).setLngLat(loc.coordinates).addTo(map);
     var popup = new mapboxgl.Popup({
       anchor: 'top',
@@ -33067,7 +33067,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56759" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50467" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
