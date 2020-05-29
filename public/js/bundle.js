@@ -13867,7 +13867,7 @@ var logout = /*#__PURE__*/function () {
               alert('logged Out successfully');
               window.setTimeout(function () {
                 location.assign('/');
-              }, 100);
+              }, 1000);
             }
 
             _context3.next = 10;
@@ -13910,7 +13910,9 @@ var elements = {
   createForm: document.querySelector('.form-blog'),
   updateFormLocation: document.querySelector('.form-blog-location'),
   // we are getting all our location which in first hand was changed to text so that it can be put in html content and that content can be read by js now trnsferring it back to json
-  mapBox: document.getElementById('map')
+  mapBox: document.getElementById('map'),
+  updateUserData: document.querySelector('.form-update-settings'),
+  updateUserPassword: document.querySelector('.form-update-password')
 };
 exports.elements = elements;
 },{}],"comment.js":[function(require,module,exports) {
@@ -32946,7 +32948,125 @@ var displayMap = function displayMap(locations) {
 };
 
 exports.displayMap = displayMap;
-},{}],"index.js":[function(require,module,exports) {
+},{}],"updateSetting.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.updatePassword = exports.updateUser = void 0;
+
+var _axios = _interopRequireDefault(require("axios"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+var updateUser = /*#__PURE__*/function () {
+  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(name, email) {
+    var res;
+    return regeneratorRuntime.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.prev = 0;
+            console.log(name, email);
+            _context.next = 4;
+            return (0, _axios.default)({
+              method: 'Patch',
+              url: 'http://127.0.0.1:3000/api/users/updateMe',
+              data: {
+                name: name,
+                email: email
+              }
+            });
+
+          case 4:
+            res = _context.sent;
+            console.log(res.data);
+
+            if (res.data.status === 'success') {
+              alert('changed  successfully');
+              location.reload(true);
+            }
+
+            _context.next = 12;
+            break;
+
+          case 9:
+            _context.prev = 9;
+            _context.t0 = _context["catch"](0);
+            console.log(_context.t0);
+
+          case 12:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee, null, [[0, 9]]);
+  }));
+
+  return function updateUser(_x, _x2) {
+    return _ref.apply(this, arguments);
+  };
+}();
+
+exports.updateUser = updateUser;
+
+var updatePassword = /*#__PURE__*/function () {
+  var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(currentPassword, password, confirmPassword) {
+    var res;
+    return regeneratorRuntime.wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.prev = 0;
+            console.log(currentPassword, password, confirmPassword);
+            _context2.next = 4;
+            return (0, _axios.default)({
+              method: 'Patch',
+              url: 'http://127.0.0.1:3000/api/users/updateMe',
+              data: {
+                currentPassword: currentPassword,
+                password: password,
+                confirmPassword: confirmPassword
+              }
+            });
+
+          case 4:
+            res = _context2.sent;
+            console.log(res.data);
+
+            if (res.data.status === 'success') {
+              alert('changed  successfully');
+              location.reload(true);
+            }
+
+            _context2.next = 12;
+            break;
+
+          case 9:
+            _context2.prev = 9;
+            _context2.t0 = _context2["catch"](0);
+            console.log(_context2.t0);
+
+          case 12:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2, null, [[0, 9]]);
+  }));
+
+  return function updatePassword(_x3, _x4, _x5) {
+    return _ref2.apply(this, arguments);
+  };
+}();
+
+exports.updatePassword = updatePassword;
+},{"axios":"../../node_modules/axios/index.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 require("core-js/stable");
@@ -32962,6 +33082,8 @@ var _comment = require("./comment");
 var _createForm = require("./createForm");
 
 var _mapbox = require("./mapbox");
+
+var _updateSetting = require("./updateSetting");
 
 /* eslint-disable */
 if (_base.elements.signupForm) {
@@ -33029,7 +33151,6 @@ if (_base.elements.createForm) {
     var locationAddress = document.getElementById('locationAddress').value;
     var locationDescription = document.getElementById('locationDescription').value;
     var locationDay = document.getElementById('locationDay').value;
-    console.log(locationAddress, locationCoordinates, startCoordinates, locationDescription, locationDay);
     (0, _createForm.createPost)(name, startDates, imageCover, images, summary, description, duration, startAddress, startCoordinates, startDescription, maxGroupSize, locationAddress, locationCoordinates, locationDescription, locationDay);
   });
 } // locations is the dataset name given in html file
@@ -33039,7 +33160,28 @@ if (_base.elements.mapBox) {
   var locations = JSON.parse(_base.elements.mapBox.dataset.locations);
   (0, _mapbox.displayMap)(locations);
 }
-},{"core-js/stable":"../../node_modules/core-js/stable/index.js","regenerator-runtime/runtime":"../../node_modules/regenerator-runtime/runtime.js","./login":"login.js","./base":"base.js","./comment":"comment.js","./createForm":"createForm.js","./mapbox":"mapbox.js"}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+
+if (_base.elements.updateUserData) {
+  _base.elements.updateUserData.addEventListener('submit', function (e) {
+    e.preventDefault();
+    console.log('clicked');
+    var name = document.getElementById('updateName').value;
+    var email = document.getElementById('updateEmail').value;
+    (0, _updateSetting.updateUser)(name, email);
+  });
+}
+
+if (_base.elements.updateUserPassword) {
+  _base.elements.updateUserPassword.addEventListener('submit', function (e) {
+    e.preventDefault();
+    console.log('clicked  ');
+    var currentPassword = document.getElementById('currentPassword');
+    var password = document.getElementById('updatedPassword');
+    var confirmPassword = document.getElementById('confirmPassword');
+    (0, _updateSetting.updatePassword)(currentPassword, password, confirmPassword);
+  });
+}
+},{"core-js/stable":"../../node_modules/core-js/stable/index.js","regenerator-runtime/runtime":"../../node_modules/regenerator-runtime/runtime.js","./login":"login.js","./base":"base.js","./comment":"comment.js","./createForm":"createForm.js","./mapbox":"mapbox.js","./updateSetting":"updateSetting.js"}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;

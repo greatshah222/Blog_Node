@@ -7,6 +7,7 @@ import { elements } from './base';
 import { commentPost } from './comment';
 import { createPost, updatePost } from './createForm';
 import { displayMap } from './mapbox';
+import { updateUser, updatePassword } from './updateSetting';
 
 if (elements.signupForm) {
   elements.signupForm.addEventListener('submit', (e) => {
@@ -76,14 +77,6 @@ if (elements.createForm) {
     const locationDescription = document.getElementById('locationDescription')
       .value;
     const locationDay = document.getElementById('locationDay').value;
-
-    console.log(
-      locationAddress,
-      locationCoordinates,
-      startCoordinates,
-      locationDescription,
-      locationDay
-    );
     createPost(
       name,
       startDates,
@@ -108,4 +101,25 @@ if (elements.createForm) {
 if (elements.mapBox) {
   const locations = JSON.parse(elements.mapBox.dataset.locations);
   displayMap(locations);
+}
+
+if (elements.updateUserData) {
+  elements.updateUserData.addEventListener('submit', (e) => {
+    e.preventDefault();
+    console.log('clicked');
+    const name = document.getElementById('updateName').value;
+    const email = document.getElementById('updateEmail').value;
+    updateUser(name, email);
+  });
+}
+
+if (elements.updateUserPassword) {
+  elements.updateUserPassword.addEventListener('submit', (e) => {
+    e.preventDefault();
+    console.log('clicked  ');
+    const currentPassword = document.getElementById('currentPassword');
+    const password = document.getElementById('updatedPassword');
+    const confirmPassword = document.getElementById('confirmPassword');
+    updatePassword(currentPassword, password, confirmPassword);
+  });
 }

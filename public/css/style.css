@@ -937,7 +937,7 @@ Create blog form section */
   border: 2px solid rgba(0, 0, 0, 0.39);
   
   
-  padding: 20px 50px;
+  padding: 20px 30px;
 }
 .blog-section h2{
 margin-top: 0px;  
@@ -948,11 +948,10 @@ padding-top: 30px;
   grid-template-columns: 1fr 1fr;
   width: 100%;
   grid-gap: 20px;
-  padding:10px 20px
 }
 .form-blog-container{
   display: grid;
-  grid-template-columns: 20% 80%;
+  grid-template-columns: 30% 70%;
   grid-gap: 20px;
   justify-content: center;
   align-items: center;
@@ -967,7 +966,7 @@ padding-top: 30px;
   font-weight: 500;
 }
 .input-description{
-  padding:40px 20px
+  padding:40px 10px
 }
 
 /* 
@@ -1017,7 +1016,10 @@ grid-gap: -5px  ;
   margin-left: 60%;
 }
 
-
+/* 
+Map section
+Map section
+Map section */
 
 
 #map{
@@ -1027,10 +1029,17 @@ grid-gap: -5px  ;
   width: 90vw;
   margin:0 auto
 }
+/* 
+secondary nav bar section
+secondary nav bar section
+secondary nav bar section */
 
 .admin{
   display:grid;
   grid-template-columns: 0.2fr 0.8fr;
+  width: 80%;
+  margin: 50px auto;
+  height: 145vh;
 }
 .nav-secondary{
   display: grid;
@@ -1059,12 +1068,31 @@ padding-top: 100px;
 
  border: 2px solid rgba(255, 255, 255, 0.39);
 }
-
-.secondary-nav li a {
-  width: 100%;
-  cursor: pointer;
+.secondary-nav li a:link,
+.secondary-nav li a:visited{
+  color: white;
+  text-decoration: none;
 }
+
+
 .secondary-nav li:hover {
  background-color: rgba(255, 255, 255, 0.233);
  color: rgba(255, 255, 255, 0.836);
+}
+
+.account-secondary{
+  background-color: rgba(255, 255, 255, 0.418);
+  border: 2px solid rgba(0, 0, 0, 0.459);
+  padding:50px 0
+}
+
+
+.account-primary{
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.account-tertiary{
+  background-color: rgba(243, 235, 235, 0.911);
+  border: 0.5px solid rgba(0, 0, 0, 0.459);
+padding: 50px 0;
 }

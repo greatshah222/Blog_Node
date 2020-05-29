@@ -58,7 +58,7 @@ export const logout = async () => {
       alert('logged Out successfully');
       window.setTimeout(() => {
         location.assign('/');
-      }, 100);
+      }, 1000);
     }
   } catch (err) {
     alert(err);

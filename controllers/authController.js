@@ -112,3 +112,15 @@ exports.logout = (req, res, next) => {
     status: 'success',
   });
 };
+
+exports.updatepassword = catchAsync(async (req, res, next) => {
+  const user = await User.findById(req.user.id).select('+password');
+  if (!user.comparePassword(req.body.currentPassword, user.password)) {
+    return next(new CustomError('password does not match', 401));
+  }
+  // dont use findby id and update cause our validation for changing pwd into hash worls only on save and newly created documnt
+  user.password = req.body.password;
+  user.passwordConfirm = req.body.passwordConfirm;
+  await user.save();
+  createSendToken(user, 201, res);
+});

@@ -1,0 +1,63 @@
+extends base
+block head
+    script(src="https://kit.fontawesome.com/a81368914c.js")
+block content
+    section.admin
+        section.nav-secondary
+            ul.secondary-nav
+                li
+                    a(href="/account")  manage account
+                li
+                    a(href="/createBlog") Create Blog
+                li
+                    a Billings
+                li
+                    a manage account
+        section.account-primary
+
+            section.account-secondary
+                h2 YOur account settings
+                .login-container
+                    form.form-update-settings
+                        
+                        .input-div.one
+                            i
+                                i.fas.fa-users
+                            div
+                                h5=user.email
+                                input#updateEmail.input(type="email")
+                        .input-div.two
+                            i
+                                i.fas.fa-user
+                            div
+                                h5= user.name
+                                input#updateName.input(type="text")
+                        
+                        button.login-btn Update settings
+                
+            section.account-secondary.account-tertiary
+                h2 Update Password
+                .login-container
+                    form.form-update-password
+                        
+                        .input-div.one
+                            i
+                               
+                            div
+                                h5 current Password
+                                input#currentPassword.input(type="password" )
+                        .input-div.two
+                            i
+                                
+                            div
+                                h5 New Password
+                                input#updatedpassword.input(type="password" )
+                        .input-div.two
+                            i
+                                
+                            div
+                                h5 confirm Password
+                                input#updatepasswordConfirm.input(type="password")
+                        
+                        button.login-btn Change password
+                
